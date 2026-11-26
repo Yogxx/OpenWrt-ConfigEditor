@@ -23,7 +23,7 @@ An interactive script installs or removes the editor menu with a single command.
 Run this in the OpenWrt terminal:
 
 ```sh
-wget -O - https://raw.githubusercontent.com/Yogxx/OpenWrt-ConfigEditor/main/manage.sh | sh
+wget -qO - https://raw.githubusercontent.com/Yogxx/OpenWrt-ConfigEditor/main/manage.sh | sh
 ```
 
 Then pick an option:
