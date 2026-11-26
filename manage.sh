@@ -1,6 +1,6 @@
 #!/bin/sh
 
-OPENCLASH_VIEW="/www/luci-static/resources/view/services/configeditor.js"
+OPENCLASH_VIEW="/www/luci-static/resources/view/openclash/configeditor.js"
 OPENCLASH_MENU="/usr/share/luci/menu.d/luci-app-oceditor.json"
 BASE_OPENCLASH="https://raw.githubusercontent.com/Yogxx/OpenWrt-ConfigEditor/main/OpenClash"
 
