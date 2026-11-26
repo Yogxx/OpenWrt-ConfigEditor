@@ -110,30 +110,42 @@ uninstall_momo() {
 
 #####
 
-echo "=============================="
-echo "   Manage LuCI Scripts"
-echo "=============================="
-echo "1) Install ConfigEditor OpenClash"
-echo "2) Uninstall ConfigEditor OpenClash"
-echo "3) Install ConfigEditor Nikki"
-echo "4) Uninstall ConfigEditor Nikki"
-echo "5) Install ConfigEditor Clashoo"
-echo "6) Uninstall ConfigEditor Clashoo"
-echo "7) Install ConfigEditor Momo"
-echo "8) Uninstall ConfigEditor Momo"
-echo "=============================="
-printf "Pilih opsi [1-8]: "
+status() {
+    [ -f "$1" ] && printf "\033[32m[terpasang]\033[0m" || printf "\033[31m[belum]\033[0m"
+}
 
-read choice < /dev/tty
+show_menu() {
+    echo "=============================="
+    echo "   Manage LuCI Scripts"
+    echo "=============================="
+    printf " OpenClash  %b\n" "$(status "$OPENCLASH_MENU")"
+    echo "   1) Install    2) Uninstall"
+    printf " Nikki      %b\n" "$(status "$NIKKI_MENU")"
+    echo "   3) Install    4) Uninstall"
+    printf " Clashoo    %b\n" "$(status "$CLASHOO_MENU")"
+    echo "   5) Install    6) Uninstall"
+    printf " Momo       %b\n" "$(status "$MOMO_MENU")"
+    echo "   7) Install    8) Uninstall"
+    echo "------------------------------"
+    echo "   0) Keluar"
+    echo "=============================="
+    printf "Pilih opsi [0-8]: "
+}
 
-case "$choice" in
-    1) install_openclash ;;
-    2) uninstall_openclash ;;
-    3) install_nikki ;;
-    4) uninstall_nikki ;;
-    5) install_clashoo ;;
-    6) uninstall_clashoo ;;
-    7) install_momo ;;
-    8) uninstall_momo ;;
-    *) echo "❌ Pilihan tidak valid!"; exit 1 ;;
-esac
+while true; do
+    show_menu
+    read choice < /dev/tty
+    case "$choice" in
+        1) install_openclash ;;
+        2) uninstall_openclash ;;
+        3) install_nikki ;;
+        4) uninstall_nikki ;;
+        5) install_clashoo ;;
+        6) uninstall_clashoo ;;
+        7) install_momo ;;
+        8) uninstall_momo ;;
+        0) echo "Bye 👋"; exit 0 ;;
+        *) echo "❌ Pilihan tidak valid!" ;;
+    esac
+    echo
+done
