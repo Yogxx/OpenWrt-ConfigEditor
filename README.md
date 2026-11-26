@@ -2,8 +2,8 @@
 
 Adds a **Config Editor** page to the LuCI menu for:
 
-* Clashoo
-* Momo
+* OpenClash
+* Nikki
 
 An interactive script installs or removes the editor menu with a single command.
 
