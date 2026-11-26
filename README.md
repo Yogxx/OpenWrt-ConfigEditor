@@ -29,22 +29,13 @@ wget -O - https://raw.githubusercontent.com/Yogxx/OpenWrt-ConfigEditor/main/mana
 Then pick an option:
 
 ```
-1) Install ConfigEditor Clashoo
-2) Uninstall ConfigEditor Clashoo
-3) Install ConfigEditor Momo
-4) Uninstall ConfigEditor Momo
+1) Install ConfigEditor OpenClash
+2) Uninstall ConfigEditor OpenClash
+3) Install ConfigEditor Nikki
+4) Uninstall ConfigEditor Nikki
 ```
 
 To uninstall, run the same command and choose the matching uninstall option.
-
----
-
-## Installed Files
-
-| App     | Menu                                                 | View                                                      |
-|---------|------------------------------------------------------|-----------------------------------------------------------|
-| Clashoo | `/usr/share/luci/menu.d/luci-app-clashooeditor.json` | `/www/luci-static/resources/view/clashoo/configeditor.js` |
-| Momo    | `/usr/share/luci/menu.d/luci-app-momoeditor.json`    | `/www/luci-static/resources/view/momo/configeditor.js`    |
 
 ---
 
