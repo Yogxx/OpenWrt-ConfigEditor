@@ -1,4 +1,4 @@
-# OpenWrt Config Editor Menu
+# OpenWrt Config Editor
 
 Adds a **Config Editor** page to the LuCI menu for:
 
