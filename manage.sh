@@ -1,5 +1,9 @@
 #!/bin/sh
 
+OPENCLASH_VIEW="/www/luci-static/resources/view/services/configeditor.js"
+OPENCLASH_MENU="/usr/share/luci/menu.d/luci-app-oceditor.json"
+BASE_OPENCLASH="https://raw.githubusercontent.com/Yogxx/OpenWrt-ConfigEditor/main/OpenClash"
+
 NIKKI_VIEW="/www/luci-static/resources/view/nikki/configeditor.js"
 NIKKI_MENU="/usr/share/luci/menu.d/luci-app-nikkieditor.json"
 BASE_NIKKI="https://raw.githubusercontent.com/Yogxx/OpenWrt-ConfigEditor/main/Nikki"
@@ -18,10 +22,30 @@ refresh_luci() {
     /etc/init.d/uhttpd restart
 }
 
+install_openclash() {
+    echo "🚀 Mulai install OpenClash Editor..."
+    mkdir -p "$(dirname "$OPENCLASH_VIEW")" "$(dirname "$OPENCLASH_MENU")"
+
+    wget -q -O "$OPENCLASH_MENU" "$BASE_OPENCLASH/luci-app-oceditor.json" || { echo "❌ Gagal download menu"; rm -f "$OPENCLASH_MENU"; exit 1; }
+    wget -q -O "$OPENCLASH_VIEW" "$BASE_OPENCLASH/configeditor.js" || { echo "❌ Gagal download view"; rm -f "$OPENCLASH_VIEW"; exit 1; }
+
+    chmod 644 "$OPENCLASH_MENU" "$OPENCLASH_VIEW"
+    refresh_luci
+    echo "✅ Install ConfigEditor selesai!"
+}
+
+uninstall_openclash() {
+    echo "🗑️  Mulai uninstall ..."
+    rm -f "$OPENCLASH_MENU" "$OPENCLASH_VIEW"
+    rmdir "$(dirname "$OPENCLASH_VIEW")" 2>/dev/null
+    refresh_luci
+    echo "✅ Uninstall selesai!"
+}
+
 #####
 
 install_nikki() {
-    echo "🚀 Mulai install Clashoo Editor..."
+    echo "🚀 Mulai install Nikki Editor..."
     mkdir -p "$(dirname "$NIKKI_VIEW")" "$(dirname "$NIKKI_MENU")"
 
     wget -q -O "$NIKKI_MENU" "$BASE_NIKKI/luci-app-nikkieditor.json" || { echo "❌ Gagal download menu"; rm -f "$NIKKI_MENU"; exit 1; }
@@ -89,23 +113,27 @@ uninstall_momo() {
 echo "=============================="
 echo "   Manage LuCI Scripts"
 echo "=============================="
-echo "1) Install ConfigEditor Nikki"
-echo "2) Uninstall ConfigEditor Nikki"
-echo "3) Install ConfigEditor Clashoo"
-echo "4) Uninstall ConfigEditor Clashoo"
-echo "5) Install ConfigEditor Momo"
-echo "6) Uninstall ConfigEditor Momo"
+echo "1) Install ConfigEditor OpenClash"
+echo "2) Uninstall ConfigEditor OpenClash"
+echo "3) Install ConfigEditor Nikki"
+echo "4) Uninstall ConfigEditor Nikki"
+echo "5) Install ConfigEditor Clashoo"
+echo "6) Uninstall ConfigEditor Clashoo"
+echo "7) Install ConfigEditor Momo"
+echo "8) Uninstall ConfigEditor Momo"
 echo "=============================="
-printf "Pilih opsi [1-6]: "
+printf "Pilih opsi [1-8]: "
 
 read choice < /dev/tty
 
 case "$choice" in
-    1) install_nikki ;;
-    2) uninstall_nikki ;;
-    3) install_clashoo ;;
-    4) uninstall_clashoo ;;
-    5) install_momo ;;
-    6) uninstall_momo ;;
+    1) install_openclash ;;
+    2) uninstall_openclash ;;
+    3) install_nikki ;;
+    4) uninstall_nikki ;;
+    5) install_clashoo ;;
+    6) uninstall_clashoo ;;
+    7) install_momo ;;
+    8) uninstall_momo ;;
     *) echo "❌ Pilihan tidak valid!"; exit 1 ;;
 esac
