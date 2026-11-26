@@ -81,7 +81,8 @@ show_menu() {
     while [ "$n" -le "$APP_COUNT" ]; do
         load_app "$n"
         printf " %-10s %b\n" "$LABEL" "$(status "$MENU")"
-        echo "   $((2 * n - 1))) Install    $((2 * n))) Uninstall"
+        echo "   $((2 * n - 1))) Install"
+        echo "   $((2 * n))) Uninstall"
         n=$((n + 1))
     done
     echo "------------------------------"
