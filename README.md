@@ -4,6 +4,8 @@ Adds a **Config Editor** page to the LuCI menu for:
 
 * OpenClash
 * Nikki
+* Momo
+* Clashoo
 
 An interactive script installs or removes the editor menu with a single command.
 
@@ -24,15 +26,6 @@ Run this in the OpenWrt terminal:
 
 ```sh
 wget -qO - https://raw.githubusercontent.com/Yogxx/OpenWrt-ConfigEditor/main/manage.sh | sh
-```
-
-Then pick an option:
-
-```
-1) Install ConfigEditor OpenClash
-2) Uninstall ConfigEditor OpenClash
-3) Install ConfigEditor Nikki
-4) Uninstall ConfigEditor Nikki
 ```
 
 To uninstall, run the same command and choose the matching uninstall option.
