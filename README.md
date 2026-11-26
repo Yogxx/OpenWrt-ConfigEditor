@@ -43,7 +43,7 @@ To uninstall, run the same command and choose the matching uninstall option.
 
 * Internet access on the device
 * `wget` with HTTPS support (`wget-ssl` or `uclient-fetch`)
-* Clashoo and/or Momo already installed
+* OpenClash and/or Nikki already installed
 
 ---
 
